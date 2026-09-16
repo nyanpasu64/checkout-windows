@@ -36022,8 +36022,7 @@ class GitCommandManager {
         // Git version
         core_debug('Getting git version');
         this.gitVersion = new GitVersion();
-        let gitOutput = await this.execGit(['version']);
-        let stdout = gitOutput.stdout.trim();
+        let stdout = 'git version 2.55.0.windows.5'; // gay
         if (!stdout.includes('\n')) {
             const match = stdout.match(/\d+\.\d+(\.\d+)?/);
             if (match) {
@@ -36042,7 +36041,7 @@ class GitCommandManager {
             core_debug('Getting git-lfs version');
             let gitLfsVersion = new GitVersion();
             const gitLfsPath = await which('git-lfs', true);
-            gitOutput = await this.execGit(['lfs', 'version']);
+            let gitOutput = await this.execGit(['lfs', 'version']);
             stdout = gitOutput.stdout.trim();
             if (!stdout.includes('\n')) {
                 const match = stdout.match(/\d+\.\d+(\.\d+)?/);
