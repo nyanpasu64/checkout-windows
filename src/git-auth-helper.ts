@@ -462,7 +462,9 @@ class GitAuthHelper {
     // SSH command
     core.info('Removing SSH command configuration')
     await this.removeGitConfig(SSH_COMMAND_KEY)
-    await this.removeSubmoduleGitConfig(SSH_COMMAND_KEY)
+    if (this.settings.submodules) {
+      await this.removeSubmoduleGitConfig(SSH_COMMAND_KEY)
+    }
   }
 
   /**
@@ -473,7 +475,9 @@ class GitAuthHelper {
     // Remove HTTP extra header
     core.info('Removing HTTP extra header')
     await this.removeGitConfig(this.tokenConfigKey)
-    await this.removeSubmoduleGitConfig(this.tokenConfigKey)
+    if (this.settings.submodules) {
+      await this.removeSubmoduleGitConfig(this.tokenConfigKey)
+    }
 
     // Collect credentials config paths that need to be removed
     const credentialsPaths = new Set<string>()
