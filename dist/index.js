@@ -42179,8 +42179,8 @@ async function getInputs() {
     else if (submodulesString == 'TRUE') {
         result.submodules = true;
     }
-    core_debug(`submodules = ${result.submodules}`);
-    core_debug(`recursive submodules = ${result.nestedSubmodules}`);
+    info(`submodules = ${result.submodules}`);
+    info(`recursive submodules = ${result.nestedSubmodules}`);
     // Auth token
     result.authToken = getInput('token', { required: true });
     // SSH
